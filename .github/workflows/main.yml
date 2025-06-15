@@ -33,13 +33,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: one-line script
-        run: echo "Hello, world!"
-      - name: compile tex
+      - name: install tex stuff
         run: |
           ls
           pwd
           sudo apt-get -y update
-          # sudo DEBIAN_FRONTEND=noninteractive apt-get -y install tzdata
           sudo apt-get --no-install-recommends -y install latexmk
+      - name: compile tex
+        run: |
           pdflatex -halt-on-error -interaction=nonstopmode notes.tex
+          pdflatex -halt-on-error -interaction=nonstopmode notes.tex
+          pdflatex -halt-on-error -interaction=nonstopmode notes.tex
+          echo "Built successfully"
