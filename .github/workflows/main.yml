@@ -28,3 +28,14 @@ jobs:
           check_filenames: true
           check_hidden: true
           skip: '*.pdf'
+
+  compile:
+    runs-on: pandoc/latex
+    steps:
+      - uses: actions/checkout@v4
+      - name: one-line script
+        run: echo Hello, world!
+      - name: compile tex
+        run: |
+          ls
+          pdflatex -halt-on-error -interaction=nonstopmode notes.tex
