@@ -9,7 +9,7 @@ course on linear algebra and applications.
 Compiling
 ---------
 
-`pdflatex notes.tex`.
+`pdflatex notes.tex`
 
 
 Reporting problems, fixing typos, etc
