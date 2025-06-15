@@ -39,7 +39,7 @@ jobs:
         run: |
           ls
           pwd
-          apt-get -y update
-          DEBIAN_FRONTEND=noninteractive apt-get -y install tzdata
-          apt-get --no-install-recommends -y install latexmk
+          sudo apt-get -y update
+          # sudo DEBIAN_FRONTEND=noninteractive apt-get -y install tzdata
+          sudo apt-get --no-install-recommends -y install latexmk
           pdflatex -halt-on-error -interaction=nonstopmode notes.tex
