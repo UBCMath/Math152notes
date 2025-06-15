@@ -28,3 +28,20 @@ jobs:
           check_filenames: true
           check_hidden: true
           skip: '*.pdf'
+
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install tex stuff
+        run: |
+          ls
+          pwd
+          sudo apt-get -y update
+          sudo apt-get --no-install-recommends -y install latexmk
+      - name: compile tex
+        run: |
+          pdflatex -halt-on-error -interaction=nonstopmode notes.tex
+          pdflatex -halt-on-error -interaction=nonstopmode notes.tex
+          pdflatex -halt-on-error -interaction=nonstopmode notes.tex
+          echo "Built successfully"
