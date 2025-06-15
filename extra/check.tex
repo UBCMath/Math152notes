@@ -1,0 +1,114 @@
+\def\ftmagnification{1200}
+\def\spacingNumerator{1}
+\def\spacingDenominator{1}
+\input jmacros
+%\input figMac
+\def\figdir{fig/}
+\def\showintremarks{n}
+
+\titlea{The Check Column}
+
+Ordinary arithmetic errors are a big problem when you do row operations
+by hand. There is a technique called ``the check column'' (that is modeled
+after the ``parity bit'' in computer hardware design) which provides a
+very effective way to catch mechanical errors. Here is an example which
+illustrates the technique
+
+
+
+\example{}{
+The augmented matrix for the system of equations
+$$\deqalign{
+  2&x_1&+&&x_2&+3x_3&=\,&&1\cr
+  4&x_1&+&5&x_2&+7x_3&=\,&&7\cr
+ 2&x_1&-&5&x_2&+5x_3&=\,&-&7\cr
+}$$
+is
+$$
+\left[\left.\matrix{2&1&3\cr  4&5&7\cr  2&-5 &5\cr}
+\right|\matrix{1\cr7\cr-7\cr}\right]
+$$
+To implement a ``check column'' you tack onto the right hand side of the 
+augmented matrix an additional column. Each entry in this check column is 
+the sum of all the entries in the row of the augmented matrix that is to 
+the left of the check column entry. For example, the top entry in the check
+column is $2+1+3+1=7$.
+$$
+\left[\left.\matrix{2&1&3\cr  4&5&7\cr  2&-5 &5\cr}
+\right|\matrix{1\cr7\cr-7\cr}\right]\matrix{7\cr 23\cr -5}
+$$
+ To use the check column you just perform the same row
+operations on the check column as you do on the augmented matrix. After
+each row operation you check that each entry in the check column is
+still the sum of all the entries in the corresponding row of the augmented
+matrix.
+
+We now want to eliminate the $x_1$'s from equations (2) and (3). That is,
+we want to make the first entries in rows 2 and 3 of the augmented matrix
+zero. We can achieve this by subtracting two times row (1) from row (2) and 
+subtracting row (1) from row (3).
+$$
+\matrix{(1)\cr (2)-2(1)\cr (3)-(1)}
+\left[\left.\matrix{2&1&3\cr  0&3&1\cr 0&-6 &2\cr}
+\right|\matrix{1\cr 5\cr-8\cr}\right]\matrix{7\cr 9\cr -12}
+$$
+Observe that the check column entry $9$ is the sum $0+3+1+5$ 
+of the entries in the second row of the augmented matrix. If this were
+not the case, it would mean that we made a mechanical error. Similarly
+the check column entry $-12$ is the sum $0-6+2-8$.
+
+We have now succeeded in eliminating all of the $x_1$'s from equations
+(2) and (3). For example, row 2 now stands for the equation
+$$
+3x_2+x_3=5
+$$
+We next use equation (2) to eliminate all $x_2$'s from equation
+(3).
+$$
+\matrix{(1)\cr (2)\cr (3)+2(2)}
+\left[\left.\matrix{2&1&3\cr  0&3&1\cr 0&0 &4\cr}
+\right|\matrix{1\cr5\cr2\cr}\right]\matrix{7\cr 9\cr 6}
+$$
+We can now easily solve (3) for $x_3$, substitute the result back into (2) and
+solve for $x_2$ and so on:
+$$\meqalign{
+(3)&\implies &&  4x_3& =2  && &\implies && x_3&=\half\cr
+(2)&\implies &&  3x_2+\half&=5  && &\implies && x_2&=\sfrac{3}{2}\cr
+(1)&\implies &&  2x_1+\sfrac{3}{2}+3\times\half&=1  && &\implies && x_1&=-1\cr
+}$$
+This last step is called ``backsolving''.
+
+Note that there is an easy way to make sure that we have not made any mechanical
+errors in deriving this solution --- just substitute the purported solution
+$(-1,3/2,1/2)$ back into the original system:
+$$\deqalign{
+  2&(-1)&\,+\,&&\sfrac{3}{2}&+3\times\half&=\,&&1\cr
+  4&(-1)&\,+&5\times &\sfrac{3}{2}&+7\times\half&=\,&&7\cr
+ 2&(-1)&\,-&5\times &\sfrac{3}{2}&+5\times\half&=\,&-&7\cr
+}$$
+and verify that each left hand side really is equal to its corresponding
+right hand side.
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end

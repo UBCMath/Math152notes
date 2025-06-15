@@ -8,3 +8,10 @@
 
 # lines that codespell should ignore: whitespace matters!
 
+# jmacros.tex: "short implies" not simplifies!
+\def\simplies{\;\Rightarrow\;}
+
+# figMac.tex
+\openin\labeLfile=\figdir#1.lbl
+\openin\labeLfile=\figdir#2.lbl
+

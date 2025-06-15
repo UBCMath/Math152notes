@@ -1,0 +1,468 @@
+%%%
+%%%   jmacros.tex
+%%%   Version of 27/12/11
+%%%   Joel Feldman  feldman@math.ubc.ca
+%%%
+%%%%%
+%%%%%   To produce the jmacros documentation:
+%%%%%       1. tex jmacrosdoc
+%%%%%       2. xdvi jmacrosdoc
+%%%%%
+
+% This is an interlock so the macros get loaded only once
+% (see the TeXbook p. 383):
+\ifx\jmacsin\relax\endinput\else\let\jmacsin=\relax\fi
+
+\def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
+\ifundefined{ftmagnification}  \def\ftmagnification{1200} \fi
+\ifundefined{spacingNumerator}  \def\spacingNumerator{3} \fi
+\ifundefined{spacingDenominator}  \def\spacingDenominator{2} \fi
+
+
+%%%%%%% VARIOUS SETTINGS
+\magnification\ftmagnification
+\tolerance=10000
+\hsize=6.5truein\vsize=8.9truein
+\def\letterPaper{\hsize=6.5truein\vsize=8.9truein}
+\def\afourPaper{\hsize=17truecm\vsize=23truecm}
+\parindent=20pt
+\mathsurround=0pt
+\ifundefined{singlespace} 
+     \multiply\baselineskip by \spacingNumerator
+     \divide \baselineskip by \spacingDenominator \else  \fi
+\def\showintremarks{y}  %%%    choose this line to include internal remarks
+%\def\showintremarks{n}  %%%   choose this line to exclude internal remarks
+\long\def\intremark#1{\if\showintremarks y
+                \removelastskip\vskip.1in\hrule\penalty500\vskip.05in\noindent
+                {\bf Internal Remark}\vskip.01in\penalty500
+                 #1
+                 %\hfill\break{\bf End Internal Remark}
+                 \vskip.05in\penalty500\hrule\vskip.1in\penalty-500
+                 \fi}
+
+%
+%     HEADERS
+%
+\def\today{\ifcase\month\or January\or February\or March\or April\or
+     May\or June\or July\or August\or September\or October\or November\or
+     December\fi\space\number\day, \number\year}
+\def\getArchdate{\openin7=\jobname.arx
+                 \ifeof7 \def\Archdate{\today}
+                 \else \read7 to \Archdate\fi
+                 \closein7}
+\def\header#1{\getArchdate
+    \rm\nopagenumbers \hfil\underbar{#1} \hfil\Archdate\bigskip
+    \headline={\rm\ifnum\pageno>1 #1\hfil\Archdate\hfil Page \folio\else\hfil\fi}}
+%
+%     STYLE SHORT FORMS
+%
+\def\dst{\displaystyle}
+\def\sst{\scriptstyle}
+\def\tst{\textstyle}
+\def\ssst{\scriptscriptstyle}
+%
+%       EQUATIONS
+%     
+\def\frac#1#2{\dst {#1\over#2}}     % fractions in displaystyle
+\def\sfrac#1#2{{\mathchoice{{\tst{#1\over#2}}}{{\tst{#1\over#2}}}
+                              {{#1\over#2}}{{#1\over#2}}}}
+
+\def\deqalign#1{\vcenter{\openup1\jot \mathsurround=0pt \ialign{
+                \strut\hfil$\displaystyle{##}$&&$\displaystyle{{}##}$\hfil
+                \crcr
+                #1\crcr}}}         %  double eqalign 
+
+\def\meqalign#1{\vcenter{\openup1\jot \mathsurround=0pt \ialign{
+                &\strut\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil&
+                \quad$##$\crcr
+                #1\crcr}}}         %  multiple eqalign
+\def\leftdisplay#1{\leftline{$\displaystyle{#1}$}}
+\def\leftrightdisplay#1#2{\line{$\displaystyle{#1}$\hfil$\displaystyle{#2}$}}
+
+\def\eqn#1{\eqno{({\rm #1})}}
+%
+%      GREEK LETTERS
+%
+\def\al{\alpha}
+\def\be{\beta}
+\def\ga{\gamma}
+\def\de{\delta}
+\def\ep{\epsilon}
+\def\ze{\zeta}
+\def\et{\eta}
+\def\th{\theta}
+\def\ka{\kappa}
+\def\la{\lambda}
+\def\rh{\rho}
+\def\si{\sigma}
+\def\ta{\tau}
+\def\up{\upsilon}
+\def\ph{\phi}
+\def\ch{\chi}
+\def\ps{\psi}
+\def\om{\omega}
+\def\veps{\varepsilon}
+\def\Ga{\Gamma}
+\def\De{\Delta}
+\def\Th{\Theta}
+\def\La{\Lambda}
+\def\Si{\Sigma}
+\def\Up{\Upsilon}
+\def\Ph{\Phi}
+\def\Ps{\Psi}
+\def\Om{\Omega}   
+%
+%        BOLD FACE, SCRIPT and ROMAN CHARACTERS
+%
+\def\pmb#1{\setbox0=\hbox{#1}       % generate bold face
+     \kern-.025em\copy0\kern-\wd0
+     \kern.05em\copy0\kern-\wd0
+     \kern-.025em\box0}             %Knuth puts in \raise.0433em before box0 
+\def\0{{\bf 0}}
+\def\k{{\bf k}}
+\def\p{{\bf p}}
+\def\q{{\bf q}}
+\def\x{{\bf x}}
+\def\y{{\bf y}}
+\def\z{{\bf z}}
+\def\bL{{\bf L}}
+\def\rF{{\rm F}}
+\def\bDe{{\bf \De}}
+\def\bphi{{\bf \Phi}}
+\def\bpsi{{\bf \Psi}}
+\def\bPhi{{\bf \Phi}}
+\def\bPsi{{\bf \Psi}}
+\def\bSi{{\bf \Si}}
+\def\bC{{\bf C}}
+\def\bS{{\bf S}}
+\def\cA{{\cal A}}
+\def\cB{{\cal B}}
+\def\cE{{\cal E}}
+\def\cF{{\cal F}}
+\def\cG{{\cal G}}
+\def\cH{{\cal H}}
+\def\cI{{\cal I}}
+\def\cJ{{\cal J}}
+\def\cL{{\cal L}}
+\def\cO{{\cal O}}
+\def\cS{{\cal S}}
+\def\cT{{\cal T}}
+\def\cY{{\cal Y}}
+%
+%      FONT FAMILIES
+%
+\font\tenfrak                 = eufm10
+\font\sevenfrak               = eufm7
+\font\fivefrak                = eufb5
+\newfam\frakfam
+     \textfont\frakfam=\tenfrak
+     \scriptfont\frakfam=\sevenfrak   
+     \scriptscriptfont\frakfam=\fivefrak
+\def\frak{\fam\frakfam\tenfrak}
+%
+\font \sixsans                = cmss10 at 6pt
+\font \ninesans               = cmss10 at 9pt
+\font \tensans                = cmss10
+\font \fivesans               = cmss10 at 5pt
+\font \sevensans              = cmss10 at 7pt
+\font \twelvesans             = cmss12
+\newfam\sansfam
+     \textfont\sansfam=\tensans
+     \scriptfont\sansfam=\sevensans
+     \scriptscriptfont\sansfam=\fivesans
+\def\sans{\fam\sansfam\tensans}
+%
+%\font \smallescriptscriptfont = cmr5
+%\font \smallescriptfont       = cmr5 at 7pt
+%\font \smalletextfont         = cmr5 at 10pt
+%
+\font\tenmsb                  =msbm10
+\font\sevenmsb                =msbm7
+\font\fivemsb                 =msbm5    
+\newfam\msbfam
+     \textfont\msbfam=\tenmsb
+     \scriptfont\msbfam=\sevenmsb   
+     \scriptscriptfont\msbfam=\fivemsb
+\def\msbfamno{\ifcase \msbfam 0\or 1\or 2\or 3\or 4\or 5\or 6\or 7\or 8\or
+ 9\or A\or B\or C\or D\or E\or F\fi}
+\def\bbb{\fam\msbfam\tenmsb}
+%
+\font\tenmsa                   =msam10
+\font\sevenmsa                 =msam7
+\font\fivemsa                  =msam5 
+\newfam\msafam
+     \textfont\msafam=\tenmsa
+     \scriptfont\msafam=\fivemsa   %NOTE small scriptsize
+     \scriptscriptfont\msafam=\fivemsa
+\def\msafamno{\ifcase \msafam 0\or 1\or 2\or 3\or 4\or 5\or 6\or 7\or 8\or
+ 9\or A\or B\or C\or D\or E\or F\fi}
+
+\font\sixrm=cmr6   \font\eightrm=cmr8  
+\font\sixi=cmmi6   \font\eighti=cmmi8  
+\font\sixsy=cmsy6  \font\eightsy=cmsy8 
+\font\sixbf=cmbx6  \font\eightbf=cmbx8 
+                   \font\eightit=cmti8 
+                   \font\eightsl=cmsl8 
+                   \font\eighttt=cmtt8 
+                   \font\eightfrak=eufm7 at 8pt
+%
+\def\eightpoint{\def\rm{\fam0\eightrm}% switch to 8-point type
+ \textfont0=\eightrm \scriptfont0=\sixrm \scriptscriptfont0=\fiverm
+ \textfont1=\eighti \scriptfont1=\sixi \scriptscriptfont1=\fivei
+ \textfont2=\eightsy \scriptfont2=\sixsy \scriptscriptfont2=\fivesy
+ \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+ \textfont\itfam=\eightit \def\it{\fam\itfam\eightit}%
+ \textfont\slfam=\eightsl \def\sl{\fam\slfam\eightsl}%
+ \textfont\ttfam=\eighttt \def\tt{\fam\ttfam\eighttt}%
+ \textfont\frakfam=\eightfrak \def\frak{\fam\frakfam\tenfrak}%
+ \textfont\bffam=\eightbf \scriptfont\bffam=\sixbf
+ \scriptscriptfont\bffam=\fivebf \def\bf{\fam\bffam\eightbf}%
+ \normalbaselineskip=9pt
+ \setbox\strutbox=\hbox{\vrule height7pt depth2pt width0pt}%
+ \let\sc=\sixrm \let\big=\eightbig \normalbaselines\rm}
+%
+\font\twelverm=cmr12
+\font\twelvei=cmmi12
+\font\twelvesy=cmsy10 at 12pt
+\font\twelvebf=cmbx12
+\font\twelveit=cmti12
+\font\twelvesl=cmsl12
+\font\twelvett=cmtt12
+%
+\def\twelvepoint{\def\rm{\fam0\twelverm}% switch to 12-point type
+ \textfont0=\twelverm \scriptfont0=\eightrm \scriptscriptfont0=\sixrm
+ \textfont1=\twelvei \scriptfont1=\eighti \scriptscriptfont1=\sixi
+ \textfont2=\twelvesy \scriptfont2=\eightsy \scriptscriptfont2=\sixsy
+ \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+ \textfont\itfam=\twelveit \def\it{\fam\itfam\twelveit}%
+ \textfont\slfam=\twelvesl \def\sl{\fam\slfam\twelvesl}%
+ \textfont\ttfam=\twelvett \def\tt{\fam\ttfam\twelvett}%
+ \textfont\bffam=\twelvebf \scriptfont\bffam=\eightbf
+ \scriptscriptfont\bffam=\sixbf \def\bf{\fam\bffam\twelvebf}%
+ \normalbaselineskip=14pt
+ \setbox\strutbox=\hbox{\vrule height10pt depth4pt width0pt}%
+ \let\sc=\tenrm \let\big=\twelvebig \normalbaselines\rm}
+
+\font\tenBigrm=cmr10 scaled\magstep2
+\font\tenBigi=cmmi10 scaled\magstep2
+\font\tenBigsy=cmsy10 scaled\magstep2
+\font\tenBigbf=cmbx10 scaled\magstep2
+\font\tenBigit=cmti10 scaled\magstep2
+\font\tenBigsl=cmsl10 scaled\magstep2
+\font\tenBigtt=cmtt10 scaled\magstep2
+%
+\def\tenBigpoint{\def\rm{\fam0\tenBigrm}% switch to 10x1.44-point type
+ \textfont0=\tenBigrm \scriptfont0=\tenrm \scriptscriptfont0=\sevenrm
+ \textfont1=\tenBigi \scriptfont1=\teni \scriptscriptfont1=\seveni
+ \textfont2=\tenBigsy \scriptfont2=\tensy \scriptscriptfont2=\sevensy
+ \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+ \textfont\itfam=\tenBigit \def\it{\fam\itfam\tenBigit}%
+ \textfont\slfam=\tenBigsl \def\sl{\fam\slfam\tenBigsl}%
+ \textfont\ttfam=\tenBigtt \def\tt{\fam\ttfam\tenBigtt}%
+ \textfont\bffam=\tenBigbf \scriptfont\bffam=\tenbf
+ \scriptscriptfont\bffam=\sevenbf \def\bf{\fam\bffam\tenBigbf}%
+ \normalbaselineskip=17.3pt
+ \setbox\strutbox=\hbox{\vrule height12.2pt depth5pt width0pt}%
+ \let\sc=\twelverm \let\big=\tenBigbig \normalbaselines\rm}
+
+%
+%  Footnotes
+%
+\catcode`@=11
+\def\footnote#1{\edef\@sf{\spacefactor\the\spacefactor}#1\@sf
+     \insert\footins\bgroup\eightpoint
+     \interlinepenalty100 \let\par=\endgraf
+     \leftskip=0pt \rightskip=0pt
+     \splittopskip=10pt plus 1pt minus 1pt \floatingpenalty=20000
+     \smallskip\item{#1}\bgroup\strut\aftergroup\@foot\let\next}
+\skip\footins=12pt plus 2pt minus 4pt
+\dimen\footins=30pc
+\catcode`@=12
+
+
+%
+%      Blackboard characters
+%
+\def\bbbr{{\rm I\!R}}  
+\def\bbbn{{\rm I\!N}} 
+\def\bbbm{{\rm I\!M}}
+\def\bbbh{{\rm I\!H}}
+\def\bbbf{{\rm I\!F}}
+\def\bbbk{{\rm I\!K}}
+\def\bbbp{{\rm I\!P}}
+\def\bbbone{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}    %\bbbone
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}}
+\def\bbbc{{\mathchoice {\setbox0=\hbox{$\displaystyle\rm C$}\hbox{\hbox %\bbbc
+to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}
+{\setbox0=\hbox{$\textstyle\rm C$}\hbox{\hbox
+to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}
+{\setbox0=\hbox{$\scriptstyle\rm C$}\hbox{\hbox
+to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}
+{\setbox0=\hbox{$\scriptscriptstyle\rm C$}\hbox{\hbox
+to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}}}
+\def\bbbq{{\mathchoice {\setbox0=\hbox{$\displaystyle\rm               %\bbbq
+Q$}\hbox{\raise
+0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.8\ht0\hss}\box0}}
+{\setbox0=\hbox{$\textstyle\rm Q$}\hbox{\raise
+0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.8\ht0\hss}\box0}}
+{\setbox0=\hbox{$\scriptstyle\rm Q$}\hbox{\raise
+0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.7\ht0\hss}\box0}}
+{\setbox0=\hbox{$\scriptscriptstyle\rm Q$}\hbox{\raise
+0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.7\ht0\hss}\box0}}}}
+\def\bbbz{{\mathchoice {\hbox{$\sans\textstyle Z\kern-0.4em Z$}}       %\bbbz
+{\hbox{$\sans\textstyle Z\kern-0.4em Z$}}
+{\hbox{$\sans\scriptstyle Z\kern-0.3em Z$}}
+{\hbox{$\sans\scriptscriptstyle Z\kern-0.2em Z$}}}}
+\def\bbbt{{\bbb T}}                                                  %\bbbt
+\def\bbbs{{\mathchoice                                               %\bbbs
+{\setbox0=\hbox{$\displaystyle     \rm S$}\hbox{\raise0.5\ht0\hbox
+to0pt{\kern0.35\wd0\vrule height0.45\ht0\hss}\hbox
+to0pt{\kern0.55\wd0\vrule height0.5\ht0\hss}\box0}}
+{\setbox0=\hbox{$\textstyle        \rm S$}\hbox{\raise0.5\ht0\hbox
+to0pt{\kern0.35\wd0\vrule height0.45\ht0\hss}\hbox
+to0pt{\kern0.55\wd0\vrule height0.5\ht0\hss}\box0}}
+{\setbox0=\hbox{$\scriptstyle      \rm S$}\hbox{\raise0.5\ht0\hbox
+to0pt{\kern0.35\wd0\vrule height0.45\ht0\hss}\raise0.05\ht0\hbox
+to0pt{\kern0.5\wd0\vrule height0.45\ht0\hss}\box0}}
+{\setbox0=\hbox{$\scriptscriptstyle\rm S$}\hbox{\raise0.5\ht0\hbox
+to0pt{\kern0.4\wd0\vrule height0.45\ht0\hss}\raise0.05\ht0\hbox
+to0pt{\kern0.55\wd0\vrule height0.45\ht0\hss}\box0}}}}
+%
+%      SYMBOLS
+%
+\def\const{{\rm const}\,}
+\def\cst#1#2{{\rm const}^{#1}_{#2}\,}
+\def\sgn{{\rm sgn}}
+\def\half{\sfrac{1}{2}}
+\def\tr{{\rm tr\, }}
+\def\Tr{{\rm Tr\, }}
+\def\optbar#1{\vbox{\ialign{##\crcr\hfil${\scriptscriptstyle(}\mkern -1mu
+         \vrule height 1.2pt width 3pt depth -.8pt
+         {\scriptscriptstyle)}$\hfil\crcr
+          \noalign{\kern-1pt\nointerlineskip}$\hfil\displaystyle{#1}\hfil$\crcr}}}
+\def\<{\left<}
+\def\>{\right>}
+\def\dbar{{\mkern6mu\mathchar'26\mkern-12mud}}
+\def\smprod{\mathop{\textstyle\prod}}
+\def\smsum{\mathop{\textstyle\sum}}
+\def\set#1#2{\big\{ \ #1\ \big|\ #2\ \big\}}
+\def\eval#1{\big|\lower4pt\hbox{$\displaystyle\sst #1$}}
+\def\slim{\mathop{\,\hbox{\rm s-lim}\,}}
+\def\cartprod{\mathop{\lower2pt\hbox{{\twelvesans X}}}}
+\def\eqdef{{\buildrel \rm def \over =}}
+\def\v{\pmb{\big\vert}}
+\def\bbar#1{\setbox0=\hbox{$#1$}%
+     \copy0\kern-\wd0
+     \raise.0433em\box0}
+\def\sbar#1{\vbox{\ialign{##\crcr
+         \noalign{\kern1pt\nointerlineskip}
+         \hfil$ \mkern -1mu\vrule height 1.2pt width 3pt depth -.9pt$\hfil\crcr
+         \noalign{\kern0pt\nointerlineskip}
+                $\hfil{\sst #1}\hfil$\crcr}}}
+\mathchardef\lle="3\msafamno36
+\mathchardef\gge="3\msafamno3E
+\def\llt{{\scriptscriptstyle <}}
+\def\ggt{{\scriptscriptstyle >}}
+\mathchardef\evall="2\msafamno16
+\mathchardef\smsetminus="2\msbfamno72
+\def\implies{\;\Longrightarrow\;}
+\def\simplies{\;\Rightarrow\;}
+%
+%       SECTION TITLES
+%
+\def\titlea#1{\centerline{\tenBigpoint\bf #1 }\vskip.5truein}
+%\def\titlea#1{\centerline{\tenBigpoint\bf #1 }\vskip.75truein}
+%\def\titleb#1{\noindent{\twelvepoint\bf #1 }\vskip.25truein}
+\def\titleb#1{\removelastskip\vskip.3truein%
+\noindent{\twelvepoint\bf #1 }\vskip.25truein}
+%\def\titlec#1{\noindent{\bf #1 }\vskip.1truein}
+\def\titlec#1{\removelastskip\vskip.15truein\noindent{\bf #1 }\vskip.1truein}
+%\def\sec{\mathhexbox278}
+%
+%          THEOREM etc.
+%
+\def\newenvironment#1#2#3#4{\long\def#1##1##2{%
+\removelastskip\penalty-100\vskip\baselineskip%
+\noindent{#3#2\if!##1!.\else\unskip\ \ignorespaces
+##1\unskip\fi\ }{#4\ignorespaces##2\vskip\baselineskip}}}
+%  
+\newenvironment\lemma{Lemma}{\bf}{\it}
+\newenvironment\proposition{Proposition}{\bf}{\it}
+\newenvironment\theorem{Theorem}{\bf}{\it}
+\newenvironment\corollary{Corollary}{\bf}{\it}
+\newenvironment\example{Example}{\bf}{\rm}
+\newenvironment\problem{Problem}{\bf}{\rm}
+\newenvironment\definition{Definition}{\bf}{\rm}
+\newenvironment\remark{Remark}{\bf}{\rm}
+\newenvironment\hypothesis{Hypothesis}{\bf}{\it}
+\newenvironment\convention{Convention}{\bf}{\it}
+
+\def\Item{\vskip.1in\noindent}
+
+%
+%         PROOF, QED  
+%
+\long\def\proof#1{\removelastskip\penalty-100\vskip\baselineskip\noindent{\bf
+            Proof\if!#1!\else\ \ignorespaces#1\fi:\ }\ \ \ignorespaces}
+\long\def\prf{\removelastskip\penalty-100\vskip\baselineskip\noindent{\bf
+            Proof:\ }\ \ \ignorespaces}
+\def\endproof{\hfill\vrule height .6em width .6em depth 0pt\goodbreak\vskip.25in }
+\def\sq{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+\def\qed{\ifmmode\sq\else{\unskip\nobreak\hfil
+           \penalty50\hskip1em\null\nobreak\hfil\sq
+           \parfillskip=0pt\finalhyphendemerits=0\endgraf}\fi}
+
+%
+%        ISSUES
+%
+%\def\showissues{y}  %%%    choose this line to include "issue" internal remarks
+\def\showissues{n}  %%%   choose this line to exclude "issue" internal remarks
+\edef\Raum{ }
+\newcount\issuesD
+\newcount\issuesND
+\long\def\issue#1{\if\showissues y \global\advance\issuesD by 1%
+%                {\bf [ISSUE[}
+%                 #1
+%                {\bf ]END ISSUE] }
+                {\noindent\bf ??? #1 ??? }
+                 \else \global\advance\issuesND by 1\fi}
+\def\printIssueCount{
+     \immediate\write16{\Raum\Raum\number\issuesD\Raum Issues displayed.}
+     \immediate\write16{\Raum\Raum\number\issuesND\Raum Issues not displayed.}}
+
+
+
+
+\newdimen\rulesz \newdimen\bordersz \newdimen\boxshift
+%
+%
+%
+%     MACRO FOR DRAWING BOXES
+%
+%     boxes drawn will have rules 1 point wide surrounding a 2 point wide border
+%     
+%     You can change these measurements by redefining \rulesz 
+%     and \bordersz in your TeX source.
+%
+%     to show a box without the box affecting other spacing set\rulesz=.1pt
+%     \bordersz=-\rulesz
+%
+%  WARNING: removing the %'s below or adding blank spaces will affect box positioning
+%
+\rulesz=1pt \bordersz=2pt 
+\def\shbox#1{\setbox111=\hbox{#1\hss}%
+\boxshift=\dp111\advance\boxshift by \rulesz\advance\boxshift by \bordersz%
+\lower\boxshift\vbox{\hrule height\rulesz%   
+\hbox{\vrule width\rulesz\kern\bordersz%                   
+\vbox{\kern\bordersz\copy111\kern\bordersz}\kern\bordersz%   
+\vrule width\rulesz}\hrule height\rulesz}}% 
+%\def\shbox#1{\lower.4pt\vbox{\hrule\hbox{\vrule\hbox{#1\hss}\vrule}\hrule}}   % box it
+%
+
+
+
+
+
+
+
+

@@ -1,0 +1,329 @@
+\def\ftmagnification{1000}
+\def\spacingNumerator{7}
+\def\spacingDenominator{6}
+\input jmacros
+\def\figdir{fig/}
+\input figMac
+\def\date{March 4, 2011}
+\footline={{\sevenrm\copyright\ Joel Feldman. 2011. All rights reserved.\hfill\date\hfill Complex Numbers and Exponentials} \hfill\folio}
+
+
+\def\Re{{\rm Re\,}}
+\def\Im{{\rm Im\,}}
+
+\titlea{Complex Numbers and Exponentials}
+%%%%%%%%%
+\titleb{Definition and Basic Operations}
+%%%%%%%%%
+A complex number is nothing more than a point in the $xy$--plane. The
+sum and product of two complex numbers $\, (x_1,y_1)\, $ and $\, (x_2,y_2) \, $
+is defined by
+$$\eqalign{
+ (x_1,y_1) + (x_2,y_2) &= (x_1+x_2,y_1+y_2)\cr
+ (x_1,y_1)\, (x_2,y_2) &= (x_1x_2-y_1y_2,x_1y_2+x_2y_1)\cr
+}$$
+respectively. It is conventional to use the notation $x+iy$ 
+(or in electrical engineering country $x+jy$)
+to stand for the complex number $(x,y)$. In other words, it is conventional
+to write $x$ in place of $(x,0)$ and $i$ in place of $(0,1)$. In this notation,
+the sum and product of two complex numbers $\, z_1=x_1+i y_1 $ and 
+$\, z_2=x_2 +iy_2 \, $ is given by
+$$\eqalign{
+z_1+z_2 &= (x_1+x_2)+i(y_1+y_2)\cr
+z_1z_2 &= x_1x_2-y_1y_2+i(x_1y_2+x_2y_1)\cr
+}$$
+ The complex number $i$ has the special property
+$$
+i^2 = (0+1i)(0+1i) = (0\times 0-1\times 1)+i(0\times 1+1\times 0) = -1
+$$
+For example, if $z=1+2i$ and $w=3+4i$, then
+$$\deqalign{
+z+w&=(1+2i)+(3+4i)&=4+6i\cr
+zw&=(1+2i)(3+4i)&=3+4i+6i+8i^2&=3+4i+6i-8=-5+10i\cr
+}$$
+Addition and multiplication of complex numbers obey the familiar algebraic
+rules
+$$\meqalign{
+z_1+z_2&=z_2+z_1 && z_1z_2&=z_2z_1 \cr
+z_1+(z_2+z_3)&=(z_1+z_2)+z_3 && z_1(z_2z_3)&=(z_1z_2)z_3 \cr
+0+z_1&=z_1 && 1z_1&=z_1 \cr
+z_1(z_2+z_3)&=z_1z_2+z_1z_3 && (z_1+z_2)z_3& = z_1z_3+z_2z_3 \cr
+}$$
+The negative of any complex number $z= x+iy$ is defined by $-z=-x+(-y)i$,
+and obeys $z+(-z)=0$. 
+%%%%%%%%%
+\goodbreak
+\titleb{Other Operations}
+%%%%%%%%%
+The complex conjugate of $\, z\, $ is denoted $\bar z$ and is
+defined to be $\, \bar z=x-i y\, $. That is, to take the complex conjugate, one
+replaces every $i$ by $-i$. Note that 
+$$
+z\bar z=(x+iy)(x-iy)=x^2-ixy+ixy+y^2=x^2+y^2
+$$
+is always a positive real number. In fact, it is the square of the distance
+from $x+iy$ (recall that this is the point $(x,y)$ in the $xy$--plane) to $0$
+(which is the point $(0,0)$). The distance from $z=x+iy$ to $0$ is 
+denoted $\, |z|\, $ and is called the
+absolute value, or modulus,  of $\, z\, $. It is given by
+$$
+|z|\ =\ \sqrt{x^2+y^2}\ =\ \sqrt{z\bar z}
+$$
+Since $z_1z_2=(x_1+iy_1)(x_2+iy_2)=(x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1)$,
+$$\eqalign{
+|z_1z_2| &=\sqrt{(x_1x_2-y_1y_2)^2+(x_1y_2+x_2y_1)^2} \cr
+ &=\sqrt{x_1^2x_2^2-2x_1x_2y_1y_2+y_1^2y_2^2
++x_1^2y_2^2+2x_1y_2x_2y_1+x_2^2y_1^2} \cr
+ &=\sqrt{x_1^2x_2^2+y_1^2y_2^2+x_1^2y_2^2+x_2^2y_1^2} 
+=\sqrt{(x_1^2+y_1^2)(x_2^2+y_2^2)} \cr
+ &=|z_1||z_2| \cr
+}$$
+for all complex numbers $\, z_1,z_2\, $.
+
+Since $|z|^2=z\bar z$, we have $z\big({ \bar z\over |z|^2}\big)=1$
+for all complex numbers $\, z\ne 0\, $. This says that the multiplicative
+inverse, denoted $z^{-1}$ or $\sfrac{1}{z}$, of any nonzero complex number
+$z=x+iy$ is
+$$
+z^{-1}=\sfrac{\bar z}{|z|^2}=\sfrac{x-iy}{x^2+y^2}
+=\sfrac{x}{x^2+y^2}-\sfrac{y}{x^2+y^2}i
+$$ 
+It is easy to divide a complex number by
+a real number. For example
+$$
+\sfrac{11+2i}{25} = \sfrac{11}{25}+\sfrac{2}{25}i
+$$
+In general, there is a trick for rewriting any ratio of complex numbers
+as a ratio with a real denominator. For example, suppose that we want to
+find $\sfrac{1+2i}{3+4i}$. The trick is to multiply by $1=\sfrac{3-4i}{3-4i}$.
+The number $3-4i$ is the complex conjugate of
+$3+4i$. Since $(3+4i)(3-4i)=9-12i+12i+16=25$
+$$
+\sfrac{1+2i}{3+4i}=\sfrac{1+2i}{3+4i}\sfrac{3-4i}{3-4i}
+=\sfrac{(1+2i)(3-4i)}{25}
+=\sfrac{11+2i}{25}
+= \sfrac{11}{25}+\sfrac{2}{25}i
+$$
+
+The notations $\Re z$ and $\Im z$ stand for the real and imaginary parts of the 
+complex number $z$, respectively. If $z=x+ iy$ (with $x$ and $y$ real) they
+are defined by 
+$$
+\Re z=x\qquad \Im z=y
+$$ 
+Note that both $\Re z$ and $\Im z$ are real numbers.
+Just subbing in  $\bar z=x-iy$ gives
+$$
+\Re z=\half(z+\bar z)\qquad \Im z=\sfrac{1}{2i}(z-\bar z)
+$$
+
+\goodbreak
+%%%%%%%%%
+\titleb{The Complex Exponential}
+%%%%%%%%%
+\noindent{\bf Definition and Basic Properties.}\  
+For any complex number $z=x+iy$ the exponential $\, e^z\, $, is defined
+by
+$$ 
+e^{x+iy}\ =\ e^x\cos y+i e^x\sin y
+$$
+In particular, $e^{iy}\ =\ \cos y+i \sin y$.
+This definition is not as mysterious as it looks. We could
+also define $e^{iy}$ by the subbing $x$ by $iy$ in the Taylor series expansion
+$e^x=\sum_{n=0}^\infty \sfrac{x^n}{n!}$. (If you don't know about this
+Taylor series expansion, just skip the rest of this paragraph.)
+$$
+e^{iy} = 1 +iy +\sfrac{(iy)^2}{2!}+\sfrac{(iy)^3}{3!}+\sfrac{(iy)^4}{4!}
++\sfrac{(iy)^5}{5!}+\sfrac{(iy)^6}{6!}+\cdots
+$$
+The even terms in this expansion are
+$$
+1  +\sfrac{(iy)^2}{2!}+\sfrac{(iy)^4}{4!}+\sfrac{(iy)^6}{6!}+\cdots
+=1  -\sfrac{y^2}{2!}+\sfrac{y^4}{4!}-\sfrac{y^6}{6!}+\cdots
+=\cos y
+$$
+and the odd terms in this expansion are
+$$
+ iy +\sfrac{(iy)^3}{3!}+\sfrac{(iy)^5}{5!}+\cdots
+=i\Big(y-\sfrac{y^3}{3!}+\sfrac{y^5}{5!}+\cdots\Big)
+=i\sin y
+$$
+
+
+For any two complex numbers $z_1$ and $z_2$
+$$\eqalign{
+e^{z_1}e^{z_2}
+\ &=\ e^{x_1}(\cos y_1+i \sin y_1)e^{x_2}(\cos y_2+i \sin y_2)\cr
+\ &=\ e^{x_1+x_2}(\cos y_1+i \sin y_1)(\cos y_2+i \sin y_2)\cr
+\ &=\ e^{x_1+x_2}\left\{(\cos y_1\cos y_2-\sin y_1\sin y_2)
++i (\cos y_1\sin y_2+\cos y_2\sin y_1)\right\}\cr
+\ &=\ e^{x_1+x_2}\left\{\cos(y_1+y_2)+i\sin(y_1+y_2)\right\}\cr
+\ &=\ e^{(x_1+x_2)+i(y_1+y_2)}\cr
+\ &=\ e^{z_1+z_2}\cr
+}$$
+so that the familiar multiplication formula also applies to complex exponentials.
+For any complex number $c=\al+i\be$ and real number $t$
+$$
+e^{ct}=e^{\al t+i\be t}=e^{\al t}[\cos( \be t)+i\sin(\be t)]
+$$
+so that the derivative with respect to $t$ 
+$$\eqalign{
+\sfrac{d\hfill}{dt} e^{ct}
+&=\al e^{\al t}[\cos( \be t)+i\sin(\be t)]
++e^{\al t}[-\be\sin( \be t)+i\be \cos(\be t)]\cr
+&=(\al+i\be) e^{\al t}[\cos( \be t)+i\sin(\be t)]\cr
+&=ce^{ct}\cr
+}$$
+is also the familiar one.
+%%%%%%%%%%% 
+\vskip.2in\noindent
+{\bf Relationship with $\sin$ and $\cos$.}\ 
+When $\th$ is a real number
+$$\eqalign{
+e^{i \th} &= \cos \th+i \sin \th\cr
+e^{-i \th} &= \cos \th-i \sin \th=\overline{e^{i\th}}\cr
+}$$
+are complex numbers of modulus one.
+Solving for $\cos\th$ and $\sin\th$ (by adding and subtracting the two equations)
+$$\deqalign{
+\cos\th&=\sfrac{1}{2}(e^{i\th}+e^{-i\th})&=\Re e^{i\th}\cr
+\sin\th&=\sfrac{1}{2i}(e^{i\th}-e^{-i\th})&=\Im e^{i\th}\cr
+}$$
+These formulae make it easy derive trig identities. For example
+$$\eqalign{
+\cos\th\cos\phi &= \sfrac{1}{4}(e^{i\th}+e^{-i\th})(e^{i\phi}+e^{-i\phi})\cr
+ &= \sfrac{1}{4}(e^{i(\th+\phi)}+e^{i(\th-\phi)}
++e^{i(-\th+\phi)}+e^{-i(\th+\phi)})\cr
+&= \sfrac{1}{4}(e^{i(\th+\phi)}+e^{-i(\th+\phi)}+e^{i(\th-\phi)}
++e^{i(-\th+\phi)})\cr
+&= \sfrac{1}{2}\big(\cos(\th+\phi)+\cos(\th-\phi)\big)\cr
+}$$ 
+and, using $(a+b)^3=a^3+3a^2b+3ab^2+b^3$,
+$$\eqalign{
+\sin^3\th&=-\sfrac{1}{8i}\big(e^{i\th}-e^{-i\th}\big)^3\cr
+&=-\sfrac{1}{8i}\big(e^{i3\th}-3e^{i\th}+3e^{-i\th}-e^{-i3\th}\big)\cr
+&=\sfrac{3}{4}\sfrac{1}{2i}\big(e^{i\th}-e^{-i\th}\big)
+-\sfrac{1}{4}\sfrac{1}{2i}\big(e^{i3\th}-e^{-i3\th}\big)\cr
+&=\sfrac{3}{4}\sin\th-\sfrac{1}{4}\sin(3\th)\cr
+}$$
+and
+$$\eqalign{
+\cos(2\th)&=\Re e^{i2\th}=\Re \big(e^{i\th}\big)^2\cr
+&=\Re \big(\cos \th+i\sin\th\big)^2\cr
+&=\Re \big(\cos^2 \th+2i\sin\th\cos\th-\sin^2\th\big)\cr
+&=\cos^2\th-\sin^2\th\cr
+}$$
+%%%%%%%%%%%
+\vskip.2in\noindent
+{\bf Polar Coordinates.}\ 
+Let $z=x+iy$ be any complex number. Writing $(x,y)$ in polar coordinates
+in the usual way gives $x=r\cos\th$, $y=r\sin\th$ and
+$$
+x+iy=r\cos\theta+ir\sin\theta=re^{i\theta}\qquad
+\figplace{polar}{0 in}{-.4 in}
+$$
+In particular
+$$
+\hbox{\figplace{polar2}{-.3 in}{-.4 in}
+\vbox{\halign{\hfil$#$ &\hfil$#\ =\ $\hfil &\hfil$#$\hfil &\hfil$#\ =\ $\hfil 
+&\hfil$#$\hfil  &\hfil$#\ =\ $\hfil &\hfil$#$\hfil   &#\hskip.2in for $k=0,\pm 1,\pm2,\cdots$\hfil \cr 
+1  &&  e^{i0}    && e^{2\pi i}         && e^{2k\pi i}             &\cr
+-1 &&  e^{i\pi}  && e^{3\pi i}         && e^{(1+2k)\pi i}         &\cr
+i  &&  e^{i\pi/2}&& e^{{5\over 2}\pi i}&& e^{({1\over 2}+2k)\pi i}&\cr
+-i &&  e^{-i\pi/2}&&e^{{3\over 2}\pi i}&& e^{(-{1\over 2}+2k)\pi i}&\cr
+}}}$$
+The polar coordinate $\th=\tan^{-1}\sfrac{y}{x}$ associated with the
+complex number $z=x+iy$ is also called the argument of $z$.
+
+The polar coordinate representation makes it easy to find square roots,
+third roots and so on. Fix any positive integer $n$. The $n^{\rm th}$ roots
+of unity are, by definition, all solutions $z$ of
+$$
+z^n\ =\ 1
+$$
+Writing $z=re^{i\th}$
+$$
+r^ne^{n\th i}\ =\ 1e^{0i}
+$$
+The polar coordinates $(r,\th)$ and $(r',\th')$ represent the same point
+in the $xy$--plane if and only if $r=r'$ and $\th=\th'+2k\pi$ for some
+integer $k$. So $z^n=1$ if and only if $r^n=1$, i.e. $r=1$, and $n\th =2
+k\pi$ for some integer $k$. The $n^{\rm th}$ roots of unity are all complex numbers
+$e^{2\pi i{k\over n}}$ with $k$ integer. There are precisely $n$ distinct
+$n^{\rm th}$ roots of unity because $e^{2\pi i{k\over n}}=e^{2\pi i{k'\over n}}$
+if and only if $2\pi {k\over n}-2\pi i{k'\over n}=2\pi {k-k'\over n}$ is
+an integer multiple of $2\pi$. That is, if and only if $k-k'$ is an integer
+multiple of $n$. The $\, n\, $ distinct nth roots of unity are
+$$
+1\ ,\ e^{2\pi i{1\over n}}\ ,\ e^{2\pi i{2\over n}}
+\ ,\  e^{2\pi i{3\over n}}\ ,\ \cdots\ ,\ e^{2\pi i{n-1\over n}}
+\figplace{polar3}{.8 in}{-.7 in}
+$$
+
+
+%%%%%%%%%%%
+\vskip.2in\noindent
+{\bf Phasors and Phasor Diagrams.}\ 
+Algebraic expressions involving complex numbers may be evaluated
+geometrically by exploiting the following two observations.
+\item{$\circ$}(Addition and subtraction) A complex number is nothing more
+than a point in the $xy$--plane. So we may identify the complex number
+$A=a+ib$ with the vector whose tail is at the origin and whose head is at
+the point $(a,b)$. Similarly, we may identify the complex number
+$C=c+id$ with the vector whose tail is at the origin and whose head is at
+the point $(c,d)$. Those two vectors form two sides of a parallelogram.
+The vector for the sum $A+C=(a+c)+i(b+d)$ is that from the origin to 
+the diagonally opposite corner of the parallelogram.
+The vector for the difference $A-C=(a-c)+i(b-d)$ has its tail at $C$ and
+its head at $A$. 
+
+\centerline{\figput{sum}\hskip1.0in\figput{diff}}
+
+\item{$\circ$}(Multiplication and Division) To multiply or divide two 
+complex numbers, write them in their polar coordinate forms $A= re^{i\th}$, 
+$C=\rho e^{i\varphi}$. So $r$ and $\rho$ are the lengths of $A$ and $C$,
+respectively, and $\th$ and $\varphi$ are the angles from the positive $x$--axis
+to $A$ and $C$, respectively. Then $AC=r\rho e^{i(\th+\varphi)}$. This vector 
+has length equal to the product of the lengths of $A$ and $C$. The angle 
+from the positive $x$--axis to $AC$ is the sum of the angles $\th$ and 
+$\varphi$. And $\sfrac{A}{C}=\sfrac{r}{\rho} e^{i(\th-\varphi)}$. This vector 
+has length equal to the ratio of the lengths of $A$ and $C$. The angle from the 
+positive $x$--axis to $AC$ is the difference of the angles $\th$ and $\varphi$.
+
+\centerline{\figput{mult}\hskip1.0in\figput{div}}
+
+
+
+\noindent 
+Complex numbers are also called ``phasors'' by some electrical engineers.
+They call the diagrams resulting from the geometric evaluation, as above,
+of algebraic expressions involving complex numbers ``phasor diagrams''.
+For example, suppose that an AC signal of frequency $\om$ is applied to
+the left hand end of the parallel circuit
+
+\centerline{\figput{parallel}}
+
+\noindent Then the impedances across the three circuit elements are
+$$
+Z_R=R\qquad
+Z_L=i\om L\qquad
+Z_C=\sfrac{1}{i\om C}
+$$
+and the impedance, $Z$, of the parallel circuit as a whole is determined
+by
+$$
+\sfrac{1}{Z}=\sfrac{1}{Z_R}+\sfrac{1}{Z_C}+\sfrac{1}{Z_L}
+=\sfrac{1}{R}+i\om C-\sfrac{i}{\om L}
+$$
+To evaluate $Z$ geometrically, we 
+\item{$\circ$}add $Z_L^{-1}=-\sfrac{i}{\om L}$ to $Z_C^{-1}=i\om C$ 
+(In the phasor diagram, below, I am considering the case that 
+$\sfrac{1}{\om L}>\om C> 0$.)
+\item{$\circ$}add $Z_R^{-1}=\sfrac{1}{R}$ to the result to give 
+$\sfrac{1}{Z}$ and finally
+\item{$\circ$}invert the result, using that $\sfrac{1}{re^{i\th}}=\sfrac{1}{r}e^{-i\th}$
+
+\centerline{\figput{phasordia}}
+
+\end
+

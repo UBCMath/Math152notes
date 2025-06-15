@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%   Macros for figure insertion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%
+%%%%%%%  The two main figure insertion macros are
+%%%%%%%
+%                \figput{<filename w/o extension>}
+%                \figplace{<filename w/o extension>}{<hor shift>}{<vert shift>}
+%%%%%%%
+%%%%%%%  The first just inserts the figure at the current location. The
+%%%%%%%  second inserts the figure at the current location but then shifts 
+%%%%%%%  horizontally by the second argument and vertically by the third.
+%%%%%%%
+%%%%%%%  Some typical TeX commands for inserting figures are
+%%%%%%%      \centerline{\figput{<filename w/o extension>}}
+%%%%%%%      \vadjust{\centerline{\figput{<filename w/o extension>}}}
+%%%%%%%      \midinsert\centerline{\figput{<filename w/o extension>}}\endinsert
+%%%%%%%      \topinsert\centerline{\figput{<filename w/o extension>}}\endinsert
+
+
+
+
+%%%%%%%
+%%%%%%%   TO SET A FIGURE DIRECTORY INSERT, FOR EXAMPLE,
+%%%%%%%                 \def\figdir{figures/}
+%%%%%%%   IN YOUR SOURCE FILE. REMEMBER THE TAILING /
+%%%%%%%
+
+
+
+%%%%%%%
+%%%%%%%     SELECT (a) YOUR POSTSCRIPT FILE SUFFIX AND (b) YOUR SYSTEM  NOW!
+%%%%%%%
+\def\suffix{ps}
+\newcount\system
+%\global\system=1   % for textures 
+%\global\system=2   % for msdos
+\global\system=3   % for unix(dvips)
+%\global\system=4   % for unix(dvips) scaled by a factor of 1.2
+%\global\system=6   % for xdvik
+
+
+
+\def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
+\ifundefined{figdir}\def\figdir{}\fi
+%
+% Now for the definitions and main macro for figure inclusion.
+%
+\newcount\firstline
+\newdimen\pswidth  \newdimen\xleft
+\newdimen\psheight \newdimen\ytop \newdimen\ybot
+\newcount\justx \newcount\justy
+\global\justx=0 \global\justy=0
+\newdimen\vpos \newtoks\labeL 
+\newread\labeLfile \newdimen\xcoord \newdimen\ycoord
+\newif\ifdoit 
+\newbox\labox
+%  variables for use with xdvik
+\newdimen\xdvikwid 
+\newdimen\xdvikht
+\newdimen\pspoints
+\newdimen\rwi
+\pspoints=1bp
+%
+\newcount\temp
+\def\readdim#1{\global\read\labeLfile to \temp
+\global #1=\temp pt}
+%
+% 
+%    figcrop{<filename,w/o extension>} treats the first two labels as marking
+%    the upper left and lower right corners of the figure. This is for
+%    positioning purposes only. The figure may extend beyond the corners.
+%    The corner markers are not printed.
+%
+%
+\def\figcrop#1{\par%  #1=filename
+\openin\labeLfile=\figdir#1.lbl                                              
+\global\read\labeLfile to\firstline\message{#1}               
+\global\read\labeLfile to\temp%read overall dimensions                                     
+\readdim{\ybot}
+\readdim{\xleft}%               read upper left point
+\readdim{\ytop}
+\global\read\labeLfile to\justx%ignore
+\global\read\labeLfile to\justy%ignore
+\global\read\labeLfile to\labeL%ignore
+\readdim{\pswidth}%            read lower right point
+\global\advance\pswidth by -\xleft
+\readdim{\psheight}
+\global\advance\ybot by -\psheight
+\global\advance\psheight by -\ytop
+\global\read\labeLfile to\justx%ignore
+\global\read\labeLfile to\justy%ignore
+\global\read\labeLfile to\labeL%ignore                                    
+\vbox to\psheight{\vfill
+%%%
+%%% NOTE: next line may have to be changed for your DVIPS driver %%%
+\ifnum\system=1\special{postscript grestore newpath gsave}\fi %textures
+\ifnum\system=2\special{postscript grestore newpath gsave}\fi %msdos
+\ifnum\system=3
+  %%  \special{" grestore newpath gsave}
+                                                 \fi         %%unix:dvips
+\ifnum\system=4\special{" grestore newpath gsave}\fi         %%unix:dvips,scaled
+\ifnum\system=1
+\hbox to \pswidth{\kern-\xleft\special{postscriptfile \figdir#1.\suffix }\hfil}\fi
+                                                              %textures
+\ifnum\system=2
+\hbox to \pswidth{\kern-\xleft\special{ps: plotfile \figdir#1.\suffix }\hfil}\fi
+                                                              %mdos 
+\ifnum\system=3
+\hbox to \pswidth{\kern-\xleft\special{psfile=\figdir#1.\suffix }\hfil}\fi
+                                                             %unix:dvips 
+\ifnum\system=4
+\hbox to \pswidth{\kern-\xleft\special{psfile=\figdir#1.\suffix hscale=120 vscale=120}\hfil}\fi
+                                                             %unix:dvips,scaled
+\ifnum\system=5
+\hbox to \pswidth{\kern-\xleft\special{psfile="\figdir#1.\suffix"}\hfil}\fi %orphee
+\ifnum\system=6
+   \xdvikwid=\pswidth
+   \xdvikht=\psheight
+   {\global\divide\xdvikwid by \pspoints}
+   {\global\divide\xdvikht by \pspoints}
+   \rwi=\xdvikwid
+    {\global\multiply\rwi by 10}
+\hbox to \pswidth{\kern-\xleft\special{psfile=\figdir#1.\suffix\space  
+                 llx=0\space lly=0\space
+                 urx=\number\xdvikwid\space ury=\number\xdvikht\space 
+                 rwi=\number\rwi}\hfil}\fi                   %xdvik
+%%%
+\vskip -\baselineskip
+\vskip -\ybot 
+\vskip-\psheight %                                     
+\hbox to\pswidth  {\hss}%                                            
+\parindent=0pt\offinterlineskip                                       
+\vpos=0 pt%                                                              
+\loop\readdim{\xcoord}                                 
+\ifdim \xcoord < -999pt \doitfalse\else\doittrue\fi                        
+\ifdoit \advance \xcoord by -\xleft
+\readdim{\ycoord}
+\advance \ycoord by -\ytop                              
+\global\read\labeLfile to\justx                                       
+\global\read\labeLfile to\justy                                       
+\global\read\labeLfile to\labeL
+\global\setbox\labox=\hbox{\labeL\hskip-0.3em}%    
+\advance\vpos by-\ycoord                                              
+\vskip-\vpos \vpos=\ycoord                                         
+\hbox to\pswidth{\hskip\xcoord %                                 
+\hbox to 0pt{\ifnum\justx>0\hss\fi%                                   
+\vbox to0pt{%                                                         
+\ifnum\justy<2\vss\fi%                                                
+\copy\labox\kern0pt%  
+\ifnum\justy>0\vss\fi}%                                               
+\ifnum\justx<2\hss\fi}%                                               
+\hss}%                                                                
+\repeat%                                                              
+\advance\vpos by-\psheight%                                           
+\vskip-\vpos %                                                     
+}\closein\labeLfile}
+%
+%
+%     \figplace{<filename w/o extension>}{<hor shift>}{<vert shift>}
+%     moves to the right by <hor shift> and down by <vert shift>
+%     and then applies \figcrop
+% 
+\def\figplace#1#2#3{
+\openin\labeLfile=\figdir#1.lbl
+\ifeof \labeLfile
+       \immediate\write16{***Can't find \figdir#1.lbl; Skipping it.***}
+\else  \closein\labeLfile
+       \null\hskip#2\raise #3 \hbox{\figcrop{#1}}
+\fi
+}
+%
+%
+%     \figput{<filename w/o extension>}
+%     
+%     just applies \figcrop
+% 
+\def\figput#1{
+\openin\labeLfile=\figdir#1.lbl
+\ifeof \labeLfile
+       \immediate\write16{***Can't find \figdir#1.lbl; Skipping it.***}
+\else  \closein\labeLfile
+       \hbox{\figcrop{#1}}
+\fi
+}
+
+%
+%
+%     \rfig{text}{<filename w/o extension>}{caption}
+%    
+% Macro for text on left side of page and figure on right side.
+% Figure is captioned below.
+%
+\newdimen\textsize
+\long\def\rfig#1#2#3{\par\smallskip
+\openin\labeLfile=\figdir#2.lbl
+\ifeof\labeLfile
+      \immediate\write16{***Can't find \figdir#2.lbl; Skipping it.***}
+\else  
+      \global\read\labeLfile to\headerinfo
+      \readdim{\pswidth}
+      \closein\labeLfile
+
+      \textsize=\hsize
+      \advance\textsize by-\pswidth  
+      \advance\textsize by-1pc
+      \line{\vtop{\hsize=\textsize{#1}\vfil}
+      \hfill\vtop{\hsize=\pswidth \vskip0pt
+      \figcrop{#2}\smallskip 
+     \line{\hfil#3\hfil}\smallskip}}
+\fi
+}
+
