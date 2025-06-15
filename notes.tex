@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                 %
+%                            ROOT FILE        5                    %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\documentclass{report}
+% \pdfminorversion=6 %%CHECK WITHOUT IT AT THE END
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% preamble
+
+% graphics
+\usepackage[pdftex]{graphicx}
+%\usepackage{pdfsync}  %%DANGER!!! for inverse search only. Disable when document is ready!
+\graphicspath{{Figures/}}
+\DeclareGraphicsExtensions{.pdf,.jpg}
+
+\usepackage{enumerate}
+\usepackage{amssymb}
+% \usepackage{amsmath}
+
+% headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}{}}
+\renewcommand{\headrulewidth}{1pt}
+%\fancyhead{}
+\fancyhead[LE,RO]{\sc \footnotesize \rightmark}
+\fancyhead[LO,RE]{\sc \footnotesize \leftmark}
+\fancyfoot[C]{\thepage}
+
+% problem and example numbering
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+
+%definitions
+\newcommand{\rdots}{\mathinner{%
+  \mkern1mu\raise1pt\hbox{.}%
+  \mkern2mu\raise4pt\hbox{.}%
+  \mkern2mu\raise7pt\vbox{\kern7pt\hbox{.}}\mkern1mu}}
+
+\def\matnotation4#1#2#3#4{
+\matrix{ #1\cr #2\cr #3\cr #4\cr }}
+
+\def\threevec#1#2#3{
+\left[\matrix{ #1\cr #2\cr #3\cr }\right]}
+
+\def\twovec#1#2{
+\left[\matrix{ #1\cr #2\cr }\right]}
+\def\lrarr{\leftrightarrow}
+\def\rarr{\rightarrow}
+\def\aa{{\bf a}}
+\def\bb{{\bf b}}
+\def\cc{{\bf c}}
+\def\dd{{\bf d}}
+\def\xx{{\bf x}}
+\def\zv{{\bf 0}}
+\def\rr{{\bf r}}
+\def\vv{{\bf v}}
+\def\xx{{\bf x}}
+\def\qq{{\bf q}}
+\def\rr{{\bf r}}
+\def\vv{{\bf v}}
+\def\xx{{\bf x}}
+\def\yy{{\bf y}}
+\def\qq{{\bf q}}
+\def\pp{{\bf p}}
+\def\eee{{\bf e}}
+\def\ii{{\bf i}}
+\def\jj{{\bf j}}
+\def\kk{{\bf k}}
+\def\RR{{\bf R}}
+\def\zz{{\bf z}}
+\def\yy{{\bf y}}
+\def\PA{\partial}
+
+\begin{document}
+\tableofcontents
+	
+\include{Chapters/chapter1}
+\include{Chapters/chapter2}
+\include{Chapters/chapter3}
+\include{Chapters/chapter4}
+\include{Chapters/chapter5}
+\include{Chapters/chapter6}
+
+
+% \addcontentsline{toc}{chapter}{Appendices}
+% %  Next lines duplicated from .toc file and used to create mini
+% %  "Appendix Table of Contents," if desired:
+%    \contentsline {chapter}{\numberline {A}Proving $E=MC^2$}{4}
+%    \contentsline {chapter}{\numberline {B}Derivation of $A = \pi r^2$}{5}
+
+\end{document}
