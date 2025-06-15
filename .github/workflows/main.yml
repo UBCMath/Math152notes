@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: FSFAP
+# Copyright (C) 2025 Colin B. Macdonald
+#
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.  This file is offered as-is,
+# without any warranty.
+
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '17 0 * * 0'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  codespell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: codespell-project/actions-codespell@v2
+        with:
+          ignore_words_file: .codespell-ignorewords
+          exclude_file: .codespell-ignorelines
+          check_filenames: true
+          check_hidden: true
