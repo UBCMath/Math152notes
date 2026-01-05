@@ -1188,14 +1188,14 @@ vectors of length 3. As an example, the command
 \begin{verbatim}
 cross([1 0 0],[0 1 0])
 \end{verbatim} 
-gives the vector result [0 0 1]. 
+gives the vector result {\tt [0 0 1]}. 
 \item[{\bf matrices:}] The syntax to generate a matrix is shown below using 
 a $2 \times 2$ example
 \begin{verbatim}
 a = [1 2; 3 4]
 \end{verbatim}
-This command assigns a matrix to {\tt a} that has the vector [1 2] in its 
-first row and [3 4] in its second. Entries of a matrix can be accessed 
+This command assigns a matrix to {\tt a} that has the vector {\tt [1 2]} in its 
+first row and {\tt [3 4]} in its second. Entries of a matrix can be accessed 
 individually, for example {\tt a(1,2)} is the entry in the first row, 
 second column. 
 \item[{\tt zeros}:] Many applications can lead to large 
@@ -1216,7 +1216,7 @@ So {\tt zeros(1,m)} is a row vector of length $m$ and {\tt zeros(n,1)}
 is a column vector of length $m$ with all zero entries. 
 \item[{\tt rand}:] {\tt rand (n,m)} generates a 
 matrix with $n$ rows and $m$ columns with entries that are random numbers 
-uniformly distributed in the interval [0,1].  
+uniformly distributed in the interval {\tt [0,1]}.  
 \item[{\tt det}:] The command {\tt det(a)} returns the determinant 
 of the matrix {\tt a}. An error occurs if {\tt a} is not 
 a square (same number of rows and columns) matrix. Determinants of 
@@ -1226,7 +1226,14 @@ section) are discussed in Chapter~\ref{ch_matrices_dets}.
 
 \subsection{MATLAB: generating scripts with the MATLAB editor}
 
-Often times using the command window in MATLAB to solve a problem can be tedious, because if the need arises to redo the problem, or change a parameter, one has to rewrite it all. The editor comes in handy for such cases. The editor is a text window (accessed from the command window: {\tt File $\rightarrow$ New $\rightarrow$ Blank M-file}) where one can write commands in the same syntax as the editor, and when one runs it, the results appear in the command window exactly as if one had written them there one after the other.
+Often times using the command window in MATLAB to solve a problem can be tedious, 
+because if the need arises to redo the problem, or change a parameter, 
+one has to rewrite it all. The editor comes in handy for such cases. 
+The editor is a text window (accessed from the command window: 
+{\tt File $\rightarrow$ New $\rightarrow$ Blank M-file}) where one can write 
+commands in the same syntax as the editor, and when one runs it, 
+the results appear in the command window exactly as if one had written them 
+there one after the other.
 
 For example, the code to generate three random orthogonal vectors would look something like this:
 \begin{verbatim}
@@ -1238,7 +1245,14 @@ dot(a1,a2)
 dot(a1,a3)
 dot(a2,a3)
 \end{verbatim}
-Note that the last three lines are there to check that the three vectors are mutually orthogonal. Once the code was written, save it from the editor window: {\tt File $\rightarrow$ Save as}, making sure that the name of the file has a ``{\tt .m}'' extension (and the file name should contain no spaces). There are several different ways of running the script, the fastest one is to hit the {\tt F5} key. Alternatively, from the editor window it can be run from {\tt Debug $\rightarrow$ Run}, or directly from the command window by typing the name of the script into the MATLAB command line.
+Note that the last three lines are there to check that the three vectors are 
+mutually orthogonal. Once the code was written, save it from the editor window: 
+{\tt File $\rightarrow$ Save as}, making sure that the name of the file has a 
+``{\tt .m}'' extension (and the file name should contain no spaces). 
+There are several different ways of running the script, the fastest one is to hit 
+the {\tt F5} key. Alternatively, from the editor window it can be run from 
+{\tt Debug $\rightarrow$ Run}, or directly from the command window by typing 
+the name of the script into the MATLAB command line.
 
 \subsection{MATLAB: floating point representation of real numbers}
 \label{sec:floating}
@@ -1252,8 +1266,8 @@ examples and computer labs for Math 152, but the reader should be aware of the p
 
 \begin{example} Consider the vectors 
 \begin{eqnarray*}
-{\bf a} & = & [1 \; 1 \; 1] \\
-{\bf b} & = & [\sqrt{2} \; \sqrt{2} \; 0]
+{\bf a} & = & [1 \quad 1 \quad 1] \\
+{\bf b} & = & [\sqrt{2} \quad \sqrt{2} \quad 0]
 \end{eqnarray*}
 and ${\bf c} = {\bf a} + {\bf b}$. 
 If a $3 \times 3$ matrix $A$  is made with rows ${\bf a}$, ${\bf b}$ and ${\bf c}$ then 
