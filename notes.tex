@@ -18,7 +18,6 @@
 \usepackage{enumerate}
 \usepackage{amssymb}
 % \usepackage{amsmath}
-\usepackage{hyperref}
 
 % headers and footers
 \usepackage{fancyhdr}
@@ -30,6 +29,10 @@
 \fancyhead[LE,RO]{\sc \footnotesize \rightmark}
 \fancyhead[LO,RE]{\sc \footnotesize \leftmark}
 \fancyfoot[C]{\thepage}
+
+% following hyperref documentation, 
+% we load hyperref as the last package 
+\usepackage{hyperref}
 
 % problem and example numbering
 \newtheorem{problem}{Problem}[chapter]
