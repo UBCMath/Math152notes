@@ -217,12 +217,12 @@ s\aa &=& s[a_1,a_2,\ldots,a_n]\\
 
 \begin{example}
 \label{2008_a1_1}
-Sketch axes $x_1$-$x_2$. Add the vectors (1,1) and (2,-1) to
+Sketch axes $x_1$-$x_2$. Add the vectors $[1,1]$ and $[2,-1]$ to
 your sketch. Draw these vectors with base point at the origin. Now add
-the vector (1,-2) to your sketch, starting at the base point
-(1,1). That is, draw the vector with components 1 to the right and 2
-down starting at (1,1). {\bf Note:}\ your sketch should show
-graphically that (1,1)+(1,-2)=(2,-1). {\rm See Figure~\ref{ch2exnew2}.}
+the vector $[1,-2]$ to your sketch, starting at the base point
+$[1,1]$. That is, draw the vector with components 1 to the right and 2
+down starting at $[1,1]$. {\bf Note:}\ your sketch should show
+graphically that $[1,1]+[1,-2]=[2,-1]$. {\rm See Figure~\ref{ch2exnew2}.}
 \end{example}
 
 \begin{figure}[htb]
@@ -276,7 +276,7 @@ In the command window at the prompt {\tt >>} (MATLAB) or $\rhd$ (Octave),
 you can type MATLAB commands directly. Some basic commands are given below 
 \begin{description}
 \item[{\bf assignment:}] Scalar and vector variables can be assigned 
-using the ``=" operator. For example 
+using the ``='' operator. For example 
 \begin{verbatim}
 a = 2 
 \end{verbatim}
@@ -300,7 +300,7 @@ b1 = [2; 3];
 Note also that there are no special distinctions between the names of scalar and
 vector variables. 
 \item[{\bf addition:}] Both scalar and vector addition can be done with 
-the ``+" operator. Keeping the values of scalar {\tt a} and vector {\tt b} 
+the ``+'' operator. Keeping the values of scalar {\tt a} and vector {\tt b} 
 above, we enter the commands
 \begin{verbatim}
 a2 = 5;
@@ -309,16 +309,17 @@ a+a2
 c = b+b2;
 \end{verbatim}
 The first two lines above assign a new scalar and vector. The third line 
-prints out the answer 7 (2+5). The last line assigns the resulting vector 
-[3 11] ([1 2] + [2 9]) to the new vector {\tt c} but prints nothing. 
+prints out the answer 7, namely $2+5$. The last line assigns the resulting vector 
+{\tt [3 11]}, namely {\tt [1 2] + [2 9]}, to the new vector {\tt c} but prints nothing. 
 \item[{\bf scalar multiplication}] Scalar multiplication (of vectors and 
-other scalars) is implemented using the ``*" command. Using the variables 
+other scalars) is implemented using the ``$*$'' command. Using the variables 
 defined above,
 \begin{verbatim}
 a*a2
 a*b 
 \end{verbatim}
-would result in 10 (2 times 5) and [2 4] (2 times [1 2]). The ``*" command 
+would result in 10, namely 2 times 5, and {\tt [2 4]}, namely 2 times {\tt [1 2]}. 
+The ``$*$'' command 
 also implements matrix-vector and matrix-matrix multiplication discussed 
 later in the course. Vector-vector multiplication (dot products and 
 cross products) are implemented using different commands as discussed in the 
@@ -338,19 +339,19 @@ entry of the vector. For example
 \begin{verbatim}
 sqrt([1 4])
 \end{verbatim}
-will produce the vector [1 2]. 
+will produce the vector {\tt [1 2]}. 
 \end{description}
 
 \subsection{Problems} 
 
 \begin{problem}
-  \label{2009_a1_1}
-Sketch axes $x_1$-$x_2$. Add the vectors (2,2) and (1,-1) to
+\label{2009_a1_1}
+Sketch axes $x_1$-$x_2$. Add the vectors $[2,2]$ and $[1,-1]$ to
 your sketch. Draw these vectors with base point at the origin. Now add
-the vector (1,-1) to your sketch, starting at the base point
-(2,2). That is, draw the vector with components 1 to the right and 1
-down starting at (2,2). {\bf Note:}\ your sketch should show
-graphically that (2,2)+(1,-1)=(3,1).
+the vector $[1,-1]$ to your sketch, starting at the base point
+$[2,2]$. That is, draw the vector with components 1 to the right and 1
+down starting at $[2,2]$. {\bf Note:}\ your sketch should show
+graphically that $[2,2]+[1,-1]=[3,1]$.
 \end{problem}
 
 \begin{problem}
@@ -543,8 +544,8 @@ so $6+3s=0$ for orthogonality, $s=-2$.}
 Here is an example to review the basic operations on vectors we know so far.
 \begin{example}
 % \label{2008_a1_2}
-Consider the vectors ${\bf a} = (2,3)$ and ${\bf b} =
-(1,-3)$ in $\mathbb{R}^2$. Compute the following:
+Consider the vectors ${\bf a} = [2,3]$ and ${\bf b} =
+[1,-3]$ in $\mathbb{R}^2$. Compute the following:
 {\begin{enumerate}
 \renewcommand{\labelenumi}{(\alph{enumi})}
 \item ${\bf a} + {\bf b}$
@@ -556,10 +557,10 @@ Consider the vectors ${\bf a} = (2,3)$ and ${\bf b} =
 {\rm Solutions:
 \begin{enumerate}
 \renewcommand{\labelenumi}{(\alph{enumi})}
-\item $\aa + \bb = (2,3)+(1,-3) = (3,0)$
-\item $3 \aa = 3 (2,3) = (6,9)$
-\item $2\aa + 4\bb = 2(2,3) + 4(-1,3) = (4,6)+(4,-12) = (8,-6)$
-\item $\aa \cdot \bb = (2,3) \cdot (1,-3) = 2-9 = -7$.
+\item $\aa + \bb = [2,3]+[1,-3] = [3,0]$
+\item $3 \aa = 3 [2,3] = [6,9]$
+\item $2\aa + 4\bb = 2[2,3] + 4[-1,3] = [4,6]+[4,-12] = [8,-6]$
+\item $\aa \cdot \bb = [2,3] \cdot [1,-3] = 2-9 = -7$.
 \item $\| \bb \| = \sqrt{1^2 + (-3)^2} = \sqrt{10}$.
 \end{enumerate}}
 \end{example}
@@ -583,7 +584,7 @@ $\bb$.  Thus ${\rm proj}_\bb\aa = s\bb$ for some number $s$. To
 compute $s$, we use the fact that the vector ${\rm proj}_\bb\aa - \aa$
 (along the dotted line in the diagram) is orthogonal to $\bb$. Thus
 $({\rm proj}_\bb\aa - \aa)\cdot\bb = 0$, or $(s\bb-\aa)\cdot\bb=0$, or
-$(s\bb)\cdot\bb-\aa\cdot\bb=0$, or $s(\bb\cdot\bb)=\aa\cdot\bb=$, or
+$(s\bb)\cdot\bb-\aa\cdot\bb=0$, or $s(\bb\cdot\bb)=\aa\cdot\bb$, or
 $s = (\aa\cdot\bb) / (\bb\cdot\bb) = (\aa\cdot\bb) / \|\bb\|^2$. Thus
 \begin{equation}
 \label{eq:projection}
@@ -655,14 +656,14 @@ of {\tt a} onto the direction {\tt b} can be implemented:
 (dot(a,b)/norm(b)^2))*b
 \end{verbatim}
 where {\tt /} denotes division (of scalar quantities in this case) and 
-{\tt \^\ p} gives the p'th power of a quantity. 
+{\tt \textasciicircum p} gives the p'th power of a quantity. 
 
 \subsection{Problems}
 
 \begin{problem}
-  \label{2009_a1_2}
-Consider the vectors ${\bf a} = (1,2)$ and ${\bf b} =
-(1,-2)$ in $\mathbb{R}^2$ (the set of vectors with 2 components).
+\label{2009_a1_2}
+Consider the vectors ${\bf a} = [1,2]$ and ${\bf b} =
+[1,-2]$ in $\mathbb{R}^2$ (the set of vectors with 2 components).
 Compute the following:
 \begin{enumerate}
 \item ${\bf a} + {\bf b}$
@@ -675,9 +676,9 @@ Compute the following:
 
 \begin{problem}
 \label{2008_a1_3}
-A circle in the $x_1$-$x_2$ plane has centre at (2,5). A given
-point on its circumference is (3,3). Write an equation that describes
-all the points $(x_1,x_2)$ on the circle. 
+A circle in the $x_1$-$x_2$ plane has centre at $[2,5]$. A given
+point on its circumference is $[3,3]$. Write an equation that describes
+all the points $[x_1,x_2]$ on the circle. 
 \end{problem}
 
 \begin{problem}
@@ -709,7 +710,7 @@ between them.
 
 \begin{problem}
 \label{2009_a1_4}
-Let ${\bf a} = (1,1,1)$ and ${\bf b} = (3,1,-2)$. Compute the
+Let ${\bf a} = [1,1,1]$ and ${\bf b} = [3,1,-2]$. Compute the
 following:
 \begin{enumerate}
 \item The angle between ${\bf a}$ and ${\bf b}$.
@@ -720,7 +721,7 @@ direction of $\bf a$).
 
 \begin{problem}
 \label{2008_a1_5}
-Let ${\bf a} = (1,4,0)$ and ${\bf b} = (2,-1,5)$. Compute the
+Let ${\bf a} = [1,4,0]$ and ${\bf b} = [2,-1,5]$. Compute the
 following:
 {\begin{enumerate}
 \renewcommand{\labelenumi}{(\alph{enumi})}
@@ -745,7 +746,7 @@ have a right angle?
 \begin{problem}
 \label{2009_a1_5}
 Determine the values of $c_1$ and $c_2$ such that the vector
-[$c_1$ 1 $c_2$] is a scalar multiple of [2 -2 3]. 
+$[c_1,1,c_2]$ is a scalar multiple of $[2,-2,3]$. 
 \end{problem}
 
 \begin{problem}
@@ -1056,7 +1057,7 @@ computations. The first two are maybe not what you expect.
 \end{enumerate}
 
 \begin{example}
-\label{2008_a2_2} Let $\aa = (1,3,-2)$ and $\bb = (-1,2,3)$. Compute
+\label{2008_a2_2} Let $\aa = [1,3,-2]$ and $\bb = [-1,2,3]$. Compute
 the following:
 {\begin{enumerate}
 \renewcommand{\labelenumi}{(\alph{enumi})}
@@ -1074,7 +1075,7 @@ $\aa \times \bb$:
 1 & 3 & -2 \\
 -1 & 2 & 3
 \end{array} \right| = \hat{i} (9+4) + \hat{j} (2-3) + \hat{k}(2+3) 
-   = (13,-1,5) 
+   = [13,-1,5] 
 \]
 so the area is 
 \[
@@ -1089,7 +1090,7 @@ product formula which should always be used for the calculation of
 angles between vectors unless you really know what you are doing:
 \[
 \cos \theta = \frac{\aa \cdot \bb}{\| \aa \| \| \bb \|} = 
-\frac{(1,3,-2)\cdot (-1,2,3)}{\|(1,3,-2)\| \|(-1,2,3)\|} 
+\frac{[1,3,-2]\cdot [-1,2,3]}{\|[1,3,-2]\| \|[-1,2,3]\|} 
 = \frac{-1+6-6}{\sqrt{1+9+4} \sqrt{1+4+9}} = \frac{-1}{14} 
 \]
 so 
@@ -1101,21 +1102,21 @@ so
 \end{example}
 
 \begin{example}
-Consider the triangle $T$ with three corners $(1,1,1)$, $(1,2,3)$ and $(2,0,1)$. Find the 
+Consider the triangle $T$ with three corners $[1,1,1]$, $[1,2,3]$ and $[2,0,1]$. Find the 
 area of $T$. 
 {\rm The area will be half of the area of the parallelogram spanned by (any) two 
-distinct sides. We take sides $(1,2,3)-(1,1,1) = (0,1,2)$ and $(2,0,1) -(1,1,1) = (1,-1,0)$
+distinct sides. We take sides $[1,2,3]-[1,1,1] = [0,1,2]$ and $[2,0,1]-[1,1,1] = [1,-1,0]$
 which make the computations a bit easier. We compute 
 \[
-(0,1,2) \times (1,-1,0) = \det \left[ \begin{array}{ccc}
+[0,1,2] \times [1,-1,0] = \det \left[ \begin{array}{ccc}
 \hat{i} & \hat{j} & \hat{k} \\
 0 & 1 & 2 \\
 1 & -1 & 0
-\end{array} \right] = (2, 2,-1) 
+\end{array} \right] = [2,2,-1] 
 \]
 and then the area of the triangle is 
 \[
-1/2 \| (2,2,-1) \| = 3/2. 
+1/2 \| [2,2,-1] \| = 3/2. 
 \] 
 } 
 \end{example} 
@@ -1187,14 +1188,14 @@ vectors of length 3. As an example, the command
 \begin{verbatim}
 cross([1 0 0],[0 1 0])
 \end{verbatim} 
-gives the vector result [0 0 1]. 
+gives the vector result {\tt [0 0 1]}. 
 \item[{\bf matrices:}] The syntax to generate a matrix is shown below using 
 a $2 \times 2$ example
 \begin{verbatim}
 a = [1 2; 3 4]
 \end{verbatim}
-This command assigns a matrix to {\tt a} that has the vector [1 2] in its 
-first row and [3 4] in its second. Entries of a matrix can be accessed 
+This command assigns a matrix to {\tt a} that has the vector {\tt [1 2]} in its 
+first row and {\tt [3 4]} in its second. Entries of a matrix can be accessed 
 individually, for example {\tt a(1,2)} is the entry in the first row, 
 second column. 
 \item[{\tt zeros}:] Many applications can lead to large 
@@ -1215,7 +1216,7 @@ So {\tt zeros(1,m)} is a row vector of length $m$ and {\tt zeros(n,1)}
 is a column vector of length $m$ with all zero entries. 
 \item[{\tt rand}:] {\tt rand (n,m)} generates a 
 matrix with $n$ rows and $m$ columns with entries that are random numbers 
-uniformly distributed in the interval [0,1].  
+uniformly distributed in the interval {\tt [0,1]}.  
 \item[{\tt det}:] The command {\tt det(a)} returns the determinant 
 of the matrix {\tt a}. An error occurs if {\tt a} is not 
 a square (same number of rows and columns) matrix. Determinants of 
@@ -1225,7 +1226,14 @@ section) are discussed in Chapter~\ref{ch_matrices_dets}.
 
 \subsection{MATLAB: generating scripts with the MATLAB editor}
 
-Often times using the command window in MATLAB to solve a problem can be tedious, because if the need arises to redo the problem, or change a parameter, one has to rewrite it all. The editor comes in handy for such cases. The editor is a text window (accessed from the command window: {\tt File $\rightarrow$ New $\rightarrow$ Blank M-file}) where one can write commands in the same syntax as the editor, and when one runs it, the results appear in the command window exactly as if one had written them there one after the other.
+Often times using the command window in MATLAB to solve a problem can be tedious, 
+because if the need arises to redo the problem, or change a parameter, 
+one has to rewrite it all. The editor comes in handy for such cases. 
+The editor is a text window (accessed from the command window: 
+{\tt File $\rightarrow$ New $\rightarrow$ Blank M-file}) where one can write 
+commands in the same syntax as the editor, and when one runs it, 
+the results appear in the command window exactly as if one had written them 
+there one after the other.
 
 For example, the code to generate three random orthogonal vectors would look something like this:
 \begin{verbatim}
@@ -1237,22 +1245,29 @@ dot(a1,a2)
 dot(a1,a3)
 dot(a2,a3)
 \end{verbatim}
-Note that the last three lines are there to check that the three vectors are mutually orthogonal. Once the code was written, save it from the editor window: {\tt File $\rightarrow$ Save as}, making sure that the name of the file has a ``{\tt .m}'' extension (and the file name should contain no spaces). There are several different ways of running the script, the fastest one is to hit the {\tt F5} key. Alternatively, from the editor window it can be run from {\tt Debug $\rightarrow$ Run}, or directly from the command window by typing the name of the script into the MATLAB command line.
+Note that the last three lines are there to check that the three vectors are 
+mutually orthogonal. Once the code was written, save it from the editor window: 
+{\tt File $\rightarrow$ Save as}, making sure that the name of the file has a 
+``{\tt .m}'' extension (and the file name should contain no spaces). 
+There are several different ways of running the script, the fastest one is to hit 
+the {\tt F5} key. Alternatively, from the editor window it can be run from 
+{\tt Debug $\rightarrow$ Run}, or directly from the command window by typing 
+the name of the script into the MATLAB command line.
 
 \subsection{MATLAB: floating point representation of real numbers}
 \label{sec:floating}
 
 MATLAB can represent integers exactly (up to limited but large size). Using a 
-``floating point representation", MATLAB can represent 
-most real numbers only approximately (but quite accurately - to 16 digits or so). In certain 
+``floating point representation'', MATLAB can represent 
+most real numbers only approximately (but quite accurately --- to 16 digits or so). In certain 
 cases, the errors made in floating point approximation of numbers can be amplified 
 and lead to noticeable errors in computed results. This will not happen typically in the 
 examples and computer labs for Math 152, but the reader should be aware of the possibility. 
 
 \begin{example} Consider the vectors 
 \begin{eqnarray*}
-{\bf a} & = & [1 \; 1 \; 1] \\
-{\bf b} & = & [\sqrt{2} \; \sqrt{2} \; 0]
+{\bf a} & = & [1 \quad 1 \quad 1] \\
+{\bf b} & = & [\sqrt{2} \quad \sqrt{2} \quad 0]
 \end{eqnarray*}
 and ${\bf c} = {\bf a} + {\bf b}$. 
 If a $3 \times 3$ matrix $A$  is made with rows ${\bf a}$, ${\bf b}$ and ${\bf c}$ then 
@@ -1295,7 +1310,7 @@ Use the definition to find the determinant of the matrix
 \]
 Do the computation by hand showing your work, but you can check
 your result using MATLAB.
-From your result, decide if the vectors [1 1 1], [1 2 3] and [1 0 -1]
+From your result, decide if the vectors $[1,1,1]$, $[1,2,3]$ and $[1,0,-1]$
 lie in the same plane (justify your answer, very briefly).
 \end{problem}
 
@@ -1308,8 +1323,8 @@ Verify that $\aa\cdot(\aa\times\bb)=0$ and $\bb\cdot(\aa\times\bb)=0$.
 \label{2008_a2_1} Simplify each of the following expressions:
 {\begin{enumerate}
 \renewcommand{\labelenumi}{(\alph{enumi})}
-\item $((1,4,-1)\cdot(2,1,3)) ((2,1,4) \times (1,4,9))$
-\item $(7,1,0)\cdot ((2,0,-1) \times (1,4,3))$
+\item $([1,4,-1]\cdot[2,1,3]) ([2,1,4] \times [1,4,9])$
+\item $[7,1,0]\cdot ([2,0,-1] \times [1,4,3])$
 \item $(\aa \times \bb) \times (\bb \times \aa)$
 \end{enumerate}}
 \end{problem}
@@ -1329,8 +1344,11 @@ and $\aa\times(\bb\times\cc)\ne(\aa\times\bb)\times\cc$.
 
 \begin{problem}
 \label{matlab_op1_15}
-(Matlab) The Matlab command {\tt a=rand(1,n)} generates an $n\times 1$ vector with random entries. Write a script that generates three random vectors and write what you obtain from $\aa\times\bb-\bb\times\aa$,
-and from $\aa\times(\bb\times\cc)-(\aa\times\bb)\times\cc$. Does that constitute a proof?
+(Matlab) The Matlab command {\tt a=rand(1,n)} generates an $n\times 1$ 
+vector with random entries. Write a script that generates three random vectors 
+and write what you obtain from $\aa\times\bb-\bb\times\aa$,
+and from $\aa\times(\bb\times\cc)-(\aa\times\bb)\times\cc$. 
+Does that constitute a proof?
 \end{problem}
 
 \begin{problem}
@@ -1340,7 +1358,9 @@ Show that $\aa\times(\bb\times\cc)=(\aa\cdot\cc)\bb-(\aa\cdot\bb)\cc$.
 
 \begin{problem}
 \label{matlab_op1_16}
-(Matlab) Write a script that generates three random vectors and checks that the result from problem \ref{op1_16} holds: $\aa\times(\bb\times\cc)=(\aa\cdot\cc)\bb-(\aa\cdot\bb)\cc$.
+(Matlab) Write a script that generates three random vectors and checks 
+that the result from problem \ref{op1_16} holds: 
+$\aa\times(\bb\times\cc)=(\aa\cdot\cc)\bb-(\aa\cdot\bb)\cc$.
 \end{problem}
 
 \begin{problem}
@@ -1357,7 +1377,7 @@ involves dot products but not cross products.
 $\aa \times (\aa \times \bb)$. Assume that $\aa$ and $\bb$ lie in the 
 plane of the paper and have an acute angle between them. 
 \item Find a formula for $\aa \times (\aa \times \bb)$ which 
-involves only $\| a \|$, $\bb$ and $\mbox{proj}_\aa \bb$. {\em Hint:} 
+involves only $\| \aa \|$, $\bb$ and ${\rm proj}_\aa \bb$. {\em Hint:} 
 use a property of the dot product. 
 \end{enumerate}}
 \end{problem}
@@ -1484,7 +1504,7 @@ and use
 \]
 Together with the point (1,2) on the line, we have an equation form 
 \[
--x_1 + 2x_2 = (-2,1) \cdot (1,2) = 0 
+-2x_1 + x_2 = (-2,1) \cdot (1,2) = 0 
 \]
 }
 \end{example}
@@ -1715,7 +1735,7 @@ Find a parametric form for the plane $x + y + 2z = 2$.
 \]
 leading to a parametric form 
 \[
-{\bf x} = (1,0,0) +s {\bf a_1} + t {\bf a_2} = (1-t, -2s+t, s) .
+{\bf x} = (2,0,0) +s {\bf a_1} + t {\bf a_2} = (1-t, -2s+t, s) .
 \]
 }
 \end{example}
